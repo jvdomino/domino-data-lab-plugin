@@ -1,0 +1,17 @@
+{
+  "$schema": "https://raw.githubusercontent.com/anthropics/claude-code/main/schemas/mcp.schema.json",
+  "mcpServers": {
+    "domino": {
+      "command": "python",
+      "args": ["-m", "domino_mcp_server"],
+      "env": {
+        "DOMINO_API_HOST": "${DOMINO_API_HOST}",
+        "DOMINO_USER_API_KEY": "${DOMINO_USER_API_KEY}",
+        "DOMINO_PROJECT_OWNER": "${DOMINO_PROJECT_OWNER}",
+        "DOMINO_PROJECT_NAME": "${DOMINO_PROJECT_NAME}"
+      },
+      "disabled": true,
+      "alwaysAllow": []
+    }
+  }
+}

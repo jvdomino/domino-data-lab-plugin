@@ -1,0 +1,177 @@
+{
+  "name": "domino-data-lab-plugin",
+  "version": "1.0.0",
+  "description": "Comprehensive Domino Data Lab integration for Claude Code. Full coverage of Domino platform: workspaces, jobs, environments, datasets, apps, experiments, GenAI tracing, model endpoints, distributed computing, model monitoring, and more.",
+  "homepage": "https://github.com/jvdomino/domino-data-lab-plugin",
+  "repository": "https://github.com/jvdomino/domino-data-lab-plugin",
+  "license": "MIT",
+  "author": {
+    "name": "Domino Data Lab",
+    "url": "https://domino.ai"
+  },
+  "skills": [
+    {
+      "name": "domino-workspaces",
+      "path": "skills/workspaces/SKILL.md"
+    },
+    {
+      "name": "domino-jobs",
+      "path": "skills/jobs/SKILL.md"
+    },
+    {
+      "name": "domino-environments",
+      "path": "skills/environments/SKILL.md"
+    },
+    {
+      "name": "domino-datasets",
+      "path": "skills/datasets/SKILL.md"
+    },
+    {
+      "name": "domino-projects",
+      "path": "skills/projects/SKILL.md"
+    },
+    {
+      "name": "domino-app-deployment",
+      "path": "skills/app-deployment/SKILL.md"
+    },
+    {
+      "name": "domino-experiment-tracking",
+      "path": "skills/experiment-tracking/SKILL.md"
+    },
+    {
+      "name": "domino-genai-tracing",
+      "path": "skills/genai-tracing/SKILL.md"
+    },
+    {
+      "name": "domino-model-endpoints",
+      "path": "skills/model-endpoints/SKILL.md"
+    },
+    {
+      "name": "domino-model-monitoring",
+      "path": "skills/model-monitoring/SKILL.md"
+    },
+    {
+      "name": "domino-flows",
+      "path": "skills/flows/SKILL.md"
+    },
+    {
+      "name": "domino-distributed-computing",
+      "path": "skills/distributed-computing/SKILL.md"
+    },
+    {
+      "name": "domino-ai-gateway",
+      "path": "skills/ai-gateway/SKILL.md"
+    },
+    {
+      "name": "domino-launchers",
+      "path": "skills/launchers/SKILL.md"
+    },
+    {
+      "name": "domino-vibe-modeling",
+      "path": "skills/vibe-modeling/SKILL.md"
+    },
+    {
+      "name": "domino-data-connectivity",
+      "path": "skills/data-connectivity/SKILL.md"
+    },
+    {
+      "name": "domino-python-sdk",
+      "path": "skills/python-sdk/SKILL.md"
+    },
+    {
+      "name": "domino-data-sdk",
+      "path": "skills/domino-data-sdk/SKILL.md"
+    }
+  ],
+  "commands": [
+    {
+      "name": "domino-app-init",
+      "path": "commands/domino-app-init.md"
+    },
+    {
+      "name": "domino-debug-proxy",
+      "path": "commands/domino-debug-proxy.md"
+    },
+    {
+      "name": "domino-experiment-setup",
+      "path": "commands/domino-experiment-setup.md"
+    },
+    {
+      "name": "domino-trace-setup",
+      "path": "commands/domino-trace-setup.md"
+    }
+  ],
+  "agents": [
+    {
+      "name": "domino-deploy",
+      "path": "agents/domino-deploy.md"
+    },
+    {
+      "name": "domino-debug",
+      "path": "agents/domino-debug.md"
+    },
+    {
+      "name": "domino-setup",
+      "path": "agents/domino-setup.md"
+    }
+  ],
+  "outputStyles": [
+    {
+      "name": "domino-learning",
+      "path": "output-styles/domino-learning.md"
+    },
+    {
+      "name": "domino-mlops",
+      "path": "output-styles/domino-mlops.md"
+    }
+  ],
+  "keywords": [
+    "domino",
+    "mlops",
+    "mlflow",
+    "experiment-tracking",
+    "genai",
+    "tracing",
+    "workspaces",
+    "jupyter",
+    "vscode",
+    "rstudio",
+    "jobs",
+    "scheduled-jobs",
+    "environments",
+    "docker",
+    "datasets",
+    "snapshots",
+    "projects",
+    "git",
+    "model-endpoints",
+    "model-monitoring",
+    "drift-detection",
+    "flows",
+    "flyte",
+    "distributed-computing",
+    "spark",
+    "ray",
+    "dask",
+    "ai-gateway",
+    "llm",
+    "launchers",
+    "apps",
+    "react",
+    "vite",
+    "streamlit",
+    "dash",
+    "vibe-modeling",
+    "mcp",
+    "s3",
+    "irsa",
+    "azure",
+    "python-sdk",
+    "domino-data",
+    "training-sets",
+    "feature-store",
+    "vectordb",
+    "pinecone",
+    "api"
+  ]
+}

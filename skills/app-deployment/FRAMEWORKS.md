@@ -113,7 +113,8 @@ import dash
 from dash import html, dcc, callback, Input, Output
 import requests
 
-app = dash.Dash(__name__)
+# IMPORTANT: Use routes_pathname_prefix='/' for proper routing inside Domino
+app = dash.Dash(__name__, routes_pathname_prefix='/')
 
 app.layout = html.Div([
     html.H1("ML Model Dashboard"),
@@ -435,6 +436,92 @@ async def predict(data: dict):
 async def health():
     return {"status": "healthy"}
 ```
+
+## Shiny (R)
+
+### Option 1: Inline R Script
+
+```r
+# app.R
+shiny::runApp("./", port = 8888, host = "0.0.0.0")
+```
+
+### Option 2: Shell Script (app.sh)
+
+```bash
+#!/bin/bash
+set -e
+
+R -e 'shiny::runApp("./", port=8888, host="0.0.0.0")'
+```
+
+### Example Shiny App
+
+```r
+# app.R
+library(shiny)
+
+ui <- fluidPage(
+  titlePanel("ML Model Dashboard"),
+
+  sidebarLayout(
+    sidebarPanel(
+      numericInput("feature1", "Feature 1:", value = 0),
+      numericInput("feature2", "Feature 2:", value = 0),
+      actionButton("predict", "Predict")
+    ),
+
+    mainPanel(
+      h4("Prediction Result:"),
+      verbatimTextOutput("result"),
+      hr(),
+      p(paste("Project:", Sys.getenv("DOMINO_PROJECT_NAME", "N/A"))),
+      p(paste("User:", Sys.getenv("DOMINO_STARTING_USERNAME", "N/A")))
+    )
+  )
+)
+
+server <- function(input, output, session) {
+  observeEvent(input$predict, {
+    model_url <- Sys.getenv("MODEL_API_URL")
+    model_token <- Sys.getenv("MODEL_API_TOKEN")
+
+    if (model_url != "" && model_token != "") {
+      library(httr)
+      response <- POST(
+        model_url,
+        add_headers(
+          "Authorization" = paste("Bearer", model_token),
+          "Content-Type" = "application/json"
+        ),
+        body = list(data = list(
+          feature1 = input$feature1,
+          feature2 = input$feature2
+        )),
+        encode = "json"
+      )
+      output$result <- renderText({ content(response, "text") })
+    } else {
+      output$result <- renderText({ "Model API not configured" })
+    }
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+### Running the Shiny App
+
+```bash
+# app.sh
+#!/bin/bash
+set -e
+
+# Run the Shiny app on required port
+R -e 'shiny::runApp("./", port=8888, host="0.0.0.0")'
+```
+
+**Note:** Port selection is flexible; port 8888 is no longer required. You can use any port your application prefers.
 
 ## Common Requirements
 

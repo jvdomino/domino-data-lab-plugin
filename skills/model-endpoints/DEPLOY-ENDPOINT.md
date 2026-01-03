@@ -2,6 +2,19 @@
 
 This guide covers creating and managing model API endpoints in Domino Data Lab.
 
+## Environment Requirements
+
+**Important:** Model APIs use the **default environment** set for your project. Ensure your environment has the `uwsgi` package installed.
+
+```dockerfile
+# Add to your environment's Dockerfile instructions
+RUN pip install uwsgi
+```
+
+To set the default environment:
+1. Go to **Project Settings** → **Execution Preferences**
+2. Set the **Default Environment** to one with `uwsgi` installed
+
 ## Creating an Endpoint
 
 ### Endpoint Function Requirements

@@ -39,31 +39,49 @@ A Job is a batch execution that runs a script or command in Domino. Unlike works
 
 ### Via Python SDK
 ```python
+import os
 from domino import Domino
 
-domino = Domino("project-owner/project-name")
-
-# Start a job
-job = domino.runs_start(
-    command="python train.py --epochs 100",
-    hardware_tier_name="gpu-small",
-    environment_id="env-123"
+domino = Domino(
+    "project-owner/project-name",
+    api_key=os.environ["DOMINO_USER_API_KEY"],
+    host=os.environ["DOMINO_API_HOST"],
 )
 
-print(f"Job ID: {job['runId']}")
-print(f"Status: {job['status']}")
+# Blocking execution - waits for job to complete
+domino_run = domino.runs_start_blocking(
+    ["train.py", "--epochs", "100"],
+    title="Training run from Python SDK"
+)
+print(domino_run)
+
+# Non-blocking execution - returns immediately
+domino_run = domino.runs_start(
+    ["train.py", "--epochs", "100"],
+    title="Training run from Python SDK"
+)
+print(f"Job ID: {domino_run['runId']}")
+
+# Check status of non-blocking run
+run_status = domino.runs_status(domino_run.get("runId"))
+print(f"Status: {run_status['status']}")
 ```
+
+**Note:** Environment variables `DOMINO_USER_API_KEY` and `DOMINO_API_HOST` are automatically configured when running within Domino workspaces or jobs.
 
 ### Via Domino CLI
 ```bash
-# Start a job
-domino run train.py --args "--epochs 100"
+# Start a job with script
+domino run train.py
 
-# With hardware tier
-domino run train.py -t gpu-small
+# Run with arguments
+domino run train.py arg1 arg2 arg3
 
-# With environment
-domino run train.py -e my-environment
+# Wait for job to complete
+domino run --wait train.py arg1 arg2
+
+# Run direct command (not a script)
+domino run --direct "pip freeze | grep pandas"
 ```
 
 ### Via REST API

@@ -46,7 +46,7 @@ A Launcher is:
    - **Hardware Tier**: Resources
    - **Environment**: Compute environment
 
-### Launcher Script
+### Launcher Script (Python)
 ```python
 # generate_report.py
 import argparse
@@ -67,10 +67,37 @@ df.to_csv('/mnt/results/report.csv', index=False)
 df.to_html('/mnt/results/report.html', index=False)
 ```
 
+### Launcher Script (R)
+```r
+# launcher.R
+args <- commandArgs(trailingOnly = TRUE)
+a <- as.integer(args[1])
+b <- as.integer(args[2])
+
+if (is.na(a)) {
+  print("A is not a number")
+} else if (is.na(b)) {
+  print("B is not a number")
+} else {
+  paste("The sum of", a, "and", b, "is:", a + b)
+}
+```
+
+Command: `launcher.R ${A} ${B}`
+
 ### Launcher Command
 ```bash
+# Python script with named arguments
 python generate_report.py --start-date ${start_date} --end-date ${end_date} --region ${region}
+
+# Python script with positional arguments
+my_script.py -x=1 ${file} ${start_date}
+
+# R script with positional arguments
+launcher.R ${A} ${B}
 ```
+
+**Note:** Parameter values are enclosed in single quotes, preserving special characters. File parameters pass the file path. Multi-select parameters pass comma-separated values.
 
 ## Parameter Types
 

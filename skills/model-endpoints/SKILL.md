@@ -30,6 +30,26 @@ Train Model → Register → Deploy Endpoint → Monitor → Update Version
 - [MONITORING.md](./MONITORING.md) - Grafana, metrics, alerts
 - [SCALING.md](./SCALING.md) - GPU inference, Triton, scaling
 
+## Environment Requirements
+
+**Important:** Model APIs use the **default environment** set for your project. The environment must have the `uwsgi` Python package installed for model endpoints to work.
+
+### Required Package
+```dockerfile
+# Add to your environment's Dockerfile instructions
+RUN pip install uwsgi
+```
+
+Or in requirements.txt:
+```
+uwsgi
+```
+
+### Setting Default Environment
+1. Go to **Project Settings** → **Execution Preferences**
+2. Set the **Default Environment** that includes `uwsgi`
+3. This environment will be used for all Model API deployments
+
 ## Quick Start
 
 ### 1. Create Endpoint Function

@@ -21,13 +21,24 @@ This plugin enables Claude Code to help you with all aspects of Domino Data Lab,
 ### Option 1: Clone the Repository
 
 ```bash
+# Clone the plugin
 git clone https://github.com/jvdomino/domino-data-lab-plugin.git
-cd domino-data-lab-plugin
+
+# Run Claude Code with the plugin
+claude --plugin-dir /path/to/domino-data-lab-plugin
 ```
 
-### Option 2: Add as Claude Code Plugin
+### Option 2: Add to Claude Code Settings
 
-Add the plugin path to your Claude Code configuration.
+Add the plugin path to your Claude Code configuration file (`~/.claude/settings.json`):
+
+```json
+{
+  "plugins": [
+    "/path/to/domino-data-lab-plugin"
+  ]
+}
+```
 
 ## Skills (18 Total)
 

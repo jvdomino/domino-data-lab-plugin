@@ -763,5 +763,5 @@ Most list endpoints support pagination:
 ```
 
 ## Documentation Reference
-- [REST API Reference](https://docs.dominodatalab.com/en/cloud/api_guide/8c929e/domino-platform-api-reference/)
-- [API Guide](https://docs.dominodatalab.com/en/cloud/api_guide/)
+- [REST API Reference](https://docs.dominodatalab.com/en/latest/api_guide/8c929e/domino-platform-api-reference/)
+- [API Guide](https://docs.dominodatalab.com/en/latest/api_guide/f35c19/api-guide/)

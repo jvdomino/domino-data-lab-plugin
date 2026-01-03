@@ -86,6 +86,64 @@ Domino provides these environment variables to your app:
 | `DOMINO_RUN_ID` | Current run identifier |
 | `DOMINO_STARTING_USERNAME` | User who started the app |
 
+## Inter-App Communication
+
+Domino apps can communicate with each other using bearer token authentication. This is useful for:
+- Calling Model APIs from an app
+- App-to-app service calls
+- Accessing internal Domino services
+
+### Getting the Access Token
+
+Domino provides an access token service at `localhost:8899`:
+
+```python
+import requests
+
+# Get bearer token for inter-app communication
+API_TOKEN = requests.get("http://localhost:8899/access-token").text
+```
+
+### Making Authenticated Requests
+
+```python
+import requests
+
+# 1. Get access token from Domino's token service
+API_TOKEN = requests.get("http://localhost:8899/access-token").text
+
+# 2. Set up headers with bearer token
+headers = {
+    "Authorization": f"Bearer {API_TOKEN}",
+    "Content-Type": "application/json"
+}
+
+# 3. Make request to another Domino app or service
+payload = {
+    "query": "Your request data here"
+}
+
+try:
+    resp = requests.post(
+        "https://your-domino-instance/apps-internal/APP_ID/endpoint",
+        json=payload,
+        headers=headers,
+        timeout=100
+    )
+    resp.raise_for_status()
+    data = resp.json()
+    print(data)
+except requests.exceptions.RequestException as err:
+    print("API call failed:", err)
+```
+
+### Key Points
+
+- **Token endpoint**: `http://localhost:8899/access-token` (only accessible from within Domino)
+- **Token type**: Bearer token for Authorization header
+- **Use cases**: Model API calls, app-to-app communication, internal services
+- **Timeout**: Set appropriate timeouts for long-running requests
+
 ## Blueprint Reference
 
 Official React CI/CD Blueprint:

@@ -182,7 +182,7 @@ The `domino-python-sdk` skill includes comprehensive REST API documentation:
 For more information about Domino Data Lab, see:
 
 - [Domino Documentation](https://docs.dominodatalab.com/)
-- [Domino API Guide](https://docs.dominodatalab.com/en/latest/api_guide/)
+- [Domino API Guide](https://docs.dominodatalab.com/en/cloud/api_guide/)
 - [Domino Blueprints](https://domino.ai/resources/blueprints)
 - [python-domino GitHub](https://github.com/dominodatalab/python-domino)
 

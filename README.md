@@ -62,6 +62,7 @@ Add the plugin path to your Claude Code configuration file (`~/.claude/settings.
 | `domino-data-connectivity` | S3 Mountpoint, AWS IRSA, Azure credentials |
 | `domino-python-sdk` | Python SDK (python-domino) and REST API |
 | `domino-data-sdk` | Data SDK (domino-data) for data sources, datasets, training sets |
+| `domino-ui-design` | Knowledge on Domino UI styling for integrated App design |
 
 ## Slash Commands
 

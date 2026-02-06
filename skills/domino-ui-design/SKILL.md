@@ -64,7 +64,9 @@ const dominoTheme = {
 
 ### Top Navigation Bar
 
-Height: 44px, Background: `#2E2E38`, Text: `#FFFFFF`. Use `domino-logo.svg` (height 32px). Primary actions on right. Only add nav items with real destinations.
+Height: 44px, Background: `#2E2E38`, Text: `#FFFFFF`. Use the Domino logo (height 32px). Primary actions on right. Only add nav items with real destinations.
+
+**Domino Logo:** Copy `assets/domino-logo.svg` from this skill's directory into the app's static files (e.g. `/mnt/code/static/domino-logo.svg`), then reference it with a relative URL. The SVG is white text on transparent background, designed for the dark nav bar.
 
 ### Charts (Highcharts)
 
